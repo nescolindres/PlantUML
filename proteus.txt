@@ -1,0 +1,33 @@
+event Next_SIG {}; // Do I need to specifiy that this event takes in a char of 'n' ? 
+event TERMINATE_SIG {};
+
+actor Example {
+
+    statemachine {
+        initial State_Initial;
+
+        state State_S {
+            initial State_s1;
+            state State_s1 {
+                initial State_s11;
+                state State_s11 {
+                    on Next_SIG {} {
+                        go State_s12{}
+                    }
+                }
+                state State_s12 {
+                    on Next_SIG {} {
+                        go State_s11{}
+                    }
+                    on TERMINATE_SIG {} {
+                        exit(0);            // Dont know if this is correct.
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+}

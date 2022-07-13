@@ -1,0 +1,22 @@
+@startuml
+
+title Example State
+
+' This is a comment
+scale 600 width
+[*] --> State_S : State_Initial
+state State_S {
+    [*] --> State_s1 : EV Q_INIT_SIG
+
+    state State_s1 {
+        [*] --> State_s11 : EV Q_INIT_SIG
+        State_s11 -> State_s12 : EV Next_SIG
+        State_s12 -> State_s11 : EV Next_SIG
+        State_s11 -> State_S
+
+    }
+    
+}
+
+
+@enduml
